@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="edusync.png" alt="Logo">
+            <h1>EduSync</h1>
+        </div>
+        <ul>
+            <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="sys_env.html"><i class="fas fa-chart-line"></i> System Enviroment</a></li>
+            <li><a href="applications.html"><i class="fas fa-cubes"></i> Installed Applications</a></li>
+            <li><a href="pc_details.html"><i class="fas fa-laptop"></i> PC Details</a></li>
+            <li><a href="stu_env.html"><i class="fas fa-user"></i> Student Details</a></li>
+            <li><a href="doubts.html"><i class="fas fa-question"></i> Doubts</a></li>
+            <li><a href="faq.html"><i class="fas fa-refresh"></i> FAQ</a></li>
+            <li><a href="tutorial.html"><i class="fas fa-chalkboard"></i> Tutorial</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar-panel">
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="top-bar-right">
+                    <h3 style="text-align: centre">Welcome back! Jagruti</h3>
+                    <div class="notifications">
+                        <i class="fas fa-bell" onclick="toggleNotifications()"></i>
+                        <div class="notification-panel" id="notificationPanel">
+                            <div class="notification-header">
+                                <span>Notifications</span>
+                                <i class="fas fa-ellipsis-v" onclick="toggleNotificationMenu()"></i>
+                                <div class="notification-menu" id="notificationMenu">
+                                    <ul>
+                                        <li>Archive All</li>
+                                        <li>Mark all as read</li>
+                                        <li>Disable Notifications</li>
+                                        <li>What's new?</li>
+                                        <li>Reports</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item">
+                                    <div class="notification-text">
+                                        <p>Software Update</p>
+                                        <span>A new software update in PC3</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-text">
+                                        <p>Doubt from Student</p>
+                                        <span>001-Error loading the software?</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-text">
+                                        <p>Notification3</p>
+                                        <span>Description</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <img src="profile.jpeg" alt="User Image" onclick="toggleProfileDropdown()">
+                    </div>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <a class="dropdown-item gap-2 py-2" href="javascript:;">
+                            <div class="text-center">
+                                <img src="profile.jpeg" class="rounded-circle p-1 shadow mb-3" alt="User Image">
+                                <h5 class="user-name mb-0 fw-bold">Hello, Jagruti</h5>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a class="dropdown-item logout" href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-header">
+            <h3>&nbsp; &nbsp; <i class="fas fa-user"></i> Student Details</h3>
+        </div>
+
+        <div class="search-filter">
+            <div class="search-filter-left">
+                <input type="text" placeholder="Search PC number.." id="search">
+                <button class="clear-button" id="clear-button" style="display: none;"><i class="fas fa-times"></i></button>
+                <select id="filter">
+                    <option value="all">All</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+            <div class="actions">
+                <button class="history-btn" onclick="viewSelectedHistory()"><i class="fas fa-history"></i> History</button>
+               <button class="delete-btn" onclick="deleteSelected()"><i class="fas fa-trash-alt"></i> Delete</button>
+           </div>
+        </div>
+
+        <div class="applications-list">
+            <h2>PC Assignments</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>PC</th>
+                        <th>Student Name</th>
+                        <th>Roll No</th>
+                        <th>Applications Installed</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="pcTable">
+                    <tr>
+                        <td><input type="checkbox" class="select-checkbox" data-rollno="001"></td>
+                        <td>PC1</td>
+                        <td>Jagruti Routh</td>
+                        <td>001</td>
+                        <td>App1, App2, App3</td>
+                        <td class="status active"><i class="fas fa-check-circle status-icon status-active"></i> Active</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="select-checkbox" data-rollno="002"></td>
+                        <td>PC2</td>
+                        <td>Radhika Sen</td>
+                        <td>002</td>
+                        <td>App2, App4</td>
+                        <td class="status inactive"><i class="fas fa-check-circle status-icon status-inactive"></i> Inactive</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="select-checkbox" data-rollno="003"></td>
+                        <td>PC3</td>
+                        <td>Keshav Madhavan</td>
+                        <td>003</td>
+                        <td>App1, App5</td>
+                        <td class="status active"><i class="fas fa-check-circle status-icon status-active"></i> Active</td>
+                    </tr>
+                    <!-- Add more PC rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="script.js"></script> <!-- Custom JS -->
+        <script src="student_main.js"></script>
+        <script>
+            document.getElementById('search').addEventListener('input', function() {
+                const searchValue = this.value.toLowerCase();
+                const rows = document.querySelectorAll('#pcTable tr');
+    
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    const rowText = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
+                    row.style.display = rowText.includes(searchValue) ? '' : 'none';
+                });
+            });
+    
+            document.getElementById('filter').addEventListener('change', function() {
+                const filterValue = this.value;
+                const rows = document.querySelectorAll('#pcTable tr');
+    
+                rows.forEach(row => {
+                    const status = row.querySelector('.status').classList.contains('active') ? 'active' : 'inactive';
+                    if (filterValue === 'all' || status === filterValue) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+    
+            function viewSelectedHistory() {
+                const selectedRollNos = Array.from(document.querySelectorAll('.select-checkbox:checked'))
+                                             .map(checkbox => checkbox.dataset.rollno);
+                if (selectedRollNos.length > 0) {
+                    const rollNoParams = selectedRollNos.join(',');
+                    window.location.href = `student_history.html?rollNos=${rollNoParams}`;
+                } else {
+                    alert('Please select at least one PC to view history.');
+                }
+            }
+    
+            function deleteSelected() {
+                const selectedCheckboxes = document.querySelectorAll('.select-checkbox:checked');
+                if (selectedCheckboxes.length > 0) {
+                    selectedCheckboxes.forEach(checkbox => {
+                        checkbox.closest('tr').remove();
+                    });
+                } else {
+                    alert('Please select at least one PC to delete.');
+                }
+            }
+        </script>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Copyright © 2024, EduSync</p> |
+                <div class="footer-links">
+                    <a href="#">Terms of Service</a> |
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+
+
+</body>
+</html>

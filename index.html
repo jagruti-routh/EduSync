@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduSync</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial;
+            color: #000;
+            margin: 0;
+            height: 100vh;
+            background-color: #ffffff; /* White background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            flex: 1;
+            margin-top: 20%;
+            width: 50%; /* Adjust width as needed */
+            height: 100%; /* Ensure container takes full height */
+            padding: 1%;
+        }
+
+        .image-container {
+            flex: 1;
+            width: 100%; /* Adjust width as needed */
+            height: 100%; /* Ensure container takes full height */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the whole left side */
+        }
+
+        .login-form {
+            color: #000; /* Change text color to black for better readability */
+            flex: 1;
+            padding: 40px; /* Add padding for better spacing */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-form h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #0f3b70; /* Professional bluish color for text */
+        }
+
+        .login-form input[type="email"],
+        .login-form input[type="password"] {
+            width: calc(60% - 40px); /* Adjust width to accommodate icon */
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc; /* Border for better visibility */
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #000; /* Change input text color to black */
+            padding-right: 40px; /* Space for icon */
+            box-sizing: border-box; /* Ensure padding doesn't expand input width */
+        }
+
+        /* Styling for the toggle password visibility icon */
+        .password-toggle {
+            position: absolute;
+            top: 32%;
+            right: 320px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #000; /* Change icon color to black */
+        }
+
+        .login-form input[type="submit"] {
+            width: 55%;
+            padding: 10px;
+            border: none;
+            border-radius: 15px;
+            background-color: #0f3b70; /* Professional bluish color for button */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-form input[type="submit"]:hover {
+            background-color: #0d3460;
+        }
+
+        .login-form .forgot-password {
+            text-align: right;
+            margin-right: 45%;
+            font-size: 14px;
+        }
+
+        .login-form .create-account {
+            margin-top: 5px;
+            margin-right: 45%;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .login-form .create-account a {
+            color: #0f3b70;
+            text-decoration: underline;
+        }
+
+        .login-form .create-account a:hover {
+            color: #0d3460;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="image-container">
+        <img src="CC index.jpeg" alt="App Logo">
+    </div>
+    <div class="container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email ID" required>
+                <br>
+                <div style="position:relative;">
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <span class="password-toggle" onclick="togglePasswordVisibility()">
+                        <i id="eyeIcon" class="fas fa-eye"></i>
+                    </span>
+                </div>
+                <br>
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <br>
+                <input type="submit" value="Sign In">
+            </form>
+            <div class="create-account">
+                <p>Don't have an account? <a href="login.html">Create Account</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById("loginPassword");
+            const eyeIcon = document.getElementById("eyeIcon");
+
+            // Toggle the password field type
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+
+            // Toggle the eye icon
+            eyeIcon.classList.toggle('fa-eye-slash');
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const storedUser = localStorage.getItem(email);
+
+            if (storedUser) {
+                const userData = JSON.parse(storedUser);
+
+                if (userData.password === password) {
+                    localStorage.setItem('currentUser', email);
+                    alert('Login successful!');
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('Invalid password');
+                }
+            } else {
+                alert('User does not exist');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

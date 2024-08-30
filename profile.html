@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="edusync.png" alt="Logo">
+            <h1>EduSync</h1>
+        </div>
+        <ul>
+            <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="sys_env.html"><i class="fas fa-chart-line"></i> System Enviroment</a></li>
+            <li><a href="applications.html"><i class="fas fa-cubes"></i> Installed Applications</a></li>
+            <li><a href="pc_details.html"><i class="fas fa-laptop"></i> PC Details</a></li>
+            <li><a href="stu_env.html"><i class="fas fa-user"></i> Student Details</a></li>
+            <li><a href="doubts.html"><i class="fas fa-question"></i> Doubts</a></li>
+            <li><a href="faq.html"><i class="fas fa-refresh"></i> FAQ</a></li>
+            <li><a href="tutorial.html"><i class="fas fa-chalkboard"></i> Tutorial</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar-panel">
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="top-bar-right">
+                    <h3 style="text-align: centre">Welcome back! Jagruti</h3>
+                    <div class="notifications">
+                        <i class="fas fa-bell" onclick="toggleNotifications()"></i>
+                        <div class="notification-panel" id="notificationPanel">
+                            <div class="notification-header">
+                                <span>Notifications</span>
+                                <i class="fas fa-ellipsis-v" onclick="toggleNotificationMenu()"></i>
+                                <div class="notification-menu" id="notificationMenu">
+                                    <ul>
+                                        <li>Archive All</li>
+                                        <li>Mark all as read</li>
+                                        <li>Disable Notifications</li>
+                                        <li>What's new?</li>
+                                        <li>Reports</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item">
+                                    <div class="notification-text">
+                                        <p>Software Update</p>
+                                        <span>A new software update in PC3</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-text">
+                                        <p>Doubt from Student</p>
+                                        <span>001-Error loading the software?</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-text">
+                                        <p>Notification3</p>
+                                        <span>Description</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <img src="profile.jpeg" alt="User Image" onclick="toggleProfileDropdown()">
+                    </div>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <a class="dropdown-item gap-2 py-2" href="javascript:;">
+                            <div class="text-center">
+                                <img src="profile.jpeg" class="rounded-circle p-1 shadow mb-3" alt="User Image">
+                                <h5 class="user-name mb-0 fw-bold">Hello, Jagruti</h5>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a class="dropdown-item logout" href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-header">
+            <h3>&nbsp; &nbsp; Profile</h3>
+        </div>
+        
+        
+        <!-- Profile Content -->
+        <div class="container-fluid p-4 profile-container">
+            <div class="profile-header text-center mb-4">
+                <div class="profile-info d-inline-flex">
+                    <div class="profile-img">
+                        <img src="profile.jpeg" alt="Profile Image">
+                    </div>
+                    <div class="profile-details">
+                        <h2>Jagruti Routh</h2>
+                        <p class="description">Engineer at BB Agency Industry<br>New York, United States</p>
+                        <div class="tags">
+                            <span class="badge bg-secondary">UX Research</span>
+                            <span class="badge bg-secondary">CX Strategy</span>
+                            <span class="badge bg-secondary">Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="gradient-divider">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- About Section -->
+                    <div class="about-section mb-4" id="aboutSection">
+                        <h4>About</h4>
+                        <ul class="list-unstyled">
+                            <li><strong><i class="fas fa-user"></i> Full Name:</strong> <span id="fullName">Jagruti Routh</span></li>
+                            <li><strong><i class="fas fa-circle"></i> Status:</strong> <span id="status">active</span></li>
+                            <li><strong><i class="fas fa-briefcase"></i> Role:</strong> <span id="role">Developer</span></li>
+                            <li><strong><i class="fas fa-flag"></i> Country:</strong> <span id="country">USA</span></li>
+                            <li><strong><i class="fas fa-language"></i> Language:</strong> <span id="language">English</span></li>
+                            <li><strong><i class="fas fa-envelope"></i> Email:</strong> <span id="email">j@gmail.com</span></li>
+                            <li><strong><i class="fas fa-phone"></i> Phone:</strong> <span id="phone"> (124) 895-6724</span></li>
+                        </ul>
+                        <div class="d-flex">
+                            <button type="button" class="btn btn-primary me-2" onclick="showEditProfile()">Edit</button>
+                        </div>
+                    </div>
+
+                    <!-- Edit Profile Section -->
+                    <div class="edit-profile" id="editProfileSection" style="display: none">
+                        <h4>Edit Profile</h4>
+                        <form id="editProfileForm">
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="First Name" id="firstNameInput">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Last Name" id="lastNameInput">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Phone" id="phoneInput">
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Email" id="emailInput">
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Password">
+                            </div>
+                            <div class="mb-3">
+                                <input type="date" class="form-control" placeholder="DOB">
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Country" id="countryInput">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="City">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Address">
+                            </div>
+                            <div class="d-flex">
+                                <button type="button" class="btn btn-primary me-2" onclick="updateProfile()">Update Profile</button>
+                                <button type="button" class="btn btn-primary me-2" onclick="window.location.href='profile.html'">Back</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Additional Information Section -->
+                    <div class="addinfo-section" id="addInfoSection">
+                        <h4>Additional Information</h4>
+                        <ul class="list-unstyled">
+                            <li><strong><i class="fas fa-birthday-cake"></i> Date of Birth:</strong> January 15, 1990</li>
+                            <li><strong><i class="fas fa-user-friends"></i> Gender:</strong> Female</li>
+                            <li><strong><i class="fas fa-graduation-cap"></i> Education:</strong> B.Sc. in Computer Science, XYZ University</li>
+                            <li><strong><i class="fas fa-certificate"></i> Certifications:</strong> AWS Certified Solutions Architect</li>
+                            <li><strong><i class="fas fa-trophy"></i> Awards and Honors:</strong> Employee of the Month (March 2024)</li>
+                            <li><strong><i class="fas fa-globe"></i> Languages:</strong> English, Spanish</li>
+                            <li><strong><i class="fas fa-map-marker-alt"></i> Location:</strong> New York, United States</li>
+                            <li><strong><i class="fas fa-briefcase"></i> Experience:</strong> 5 years in Software Development</li>
+                            <li><strong><i class="fas fa-laptop-code"></i> Skills:</strong> JavaScript, Python, AWS</li>
+                            <li><strong><i class="fas fa-heart"></i> Interests:</strong> Hiking, Reading, Photography</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Copyright © 2024, EduSync</p> |
+            <div class="footer-links">
+                <a href="#">Terms of Service</a> |
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="script.js"></script> <!-- Custom JS -->
+</body>
+</html>

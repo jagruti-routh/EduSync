@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Enviroment</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .containergraph {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            flex-wrap: nowrap;
+        }
+        .panel {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            width: 250px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .panel h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+        .chart-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .chart-container-net {
+            width: 50%;
+            height: 50%;
+            position: relative;
+            padding: 20px;
+        }
+        .specifications-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+    }
+    .specification-panel {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 48%;
+        color: #000; /* Black text color */
+        margin-right: 20px; /* Add space between the panels */
+    }
+    .specification-panel:last-child {
+        margin-right: 0; /* Remove right margin from the last panel */
+    }
+    .specification-panel h4 {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+    .specification-panel h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #2c3e50;
+    }
+    </style>
+
+</head>
+<body>
+   <!-- Sidebar -->
+   <div class="sidebar" id="sidebar">
+    <div class="logo">
+        <img src="edusync.png" alt="Logo">
+        <h1>EduSync</h1>
+    </div>
+    <ul>
+        <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+        <li><a href="sys_env.html"><i class="fas fa-chart-line"></i> System Enviroment</a></li>
+        <li><a href="applications.html"><i class="fas fa-cubes"></i> Installed Applications</a></li>
+        <li><a href="pc_details.html"><i class="fas fa-laptop"></i> PC Details</a></li>
+        <li><a href="stu_env.html"><i class="fas fa-user"></i> Student Details</a></li>
+        <li><a href="doubts.html"><i class="fas fa-question"></i> Doubts</a></li>
+        <li><a href="faq.html"><i class="fas fa-refresh"></i> FAQ</a></li>
+        <li><a href="tutorial.html"><i class="fas fa-chalkboard"></i> Tutorial</a></li>
+    </ul>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <!-- Top Bar -->
+    <div class="top-bar-panel">
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="top-bar-right">
+                <h3 style="text-align: centre">Welcome back! Jagruti</h3>
+                <div class="notifications">
+                    <i class="fas fa-bell" onclick="toggleNotifications()"></i>
+                    <div class="notification-panel" id="notificationPanel">
+                        <div class="notification-header">
+                            <span>Notifications</span>
+                            <i class="fas fa-ellipsis-v" onclick="toggleNotificationMenu()"></i>
+                            <div class="notification-menu" id="notificationMenu">
+                                <ul>
+                                    <li>Archive All</li>
+                                    <li>Mark all as read</li>
+                                    <li>Disable Notifications</li>
+                                    <li>What's new?</li>
+                                    <li>Reports</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="notification-list">
+                            <div class="notification-item">
+                                <div class="notification-text">
+                                    <p>Software Update</p>
+                                    <span>A new software update in PC3</span>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-text">
+                                    <p>Doubt from Student</p>
+                                    <span>001-Error loading the software?</span>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-text">
+                                    <p>Notification3</p>
+                                    <span>Description</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-info">
+                    <img src="profile.jpeg" alt="User Image" onclick="toggleProfileDropdown()">
+                </div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a class="dropdown-item gap-2 py-2" href="javascript:;">
+                        <div class="text-center">
+                            <img src="profile.jpeg" class="rounded-circle p-1 shadow mb-3" alt="User Image">
+                            <h5 class="user-name mb-0 fw-bold">Hello, Jagruti</h5>
+                        </div>
+                    </a>
+                    <a class="dropdown-item" href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a class="dropdown-item logout" href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="content-header">
+            <h3>&nbsp; &nbsp; <i class="fas fa-chart-line"></i> System Enviroment</h3>
+        </div>
+        <hr class="gradient-divider">
+        <div class="container">
+            <div class="system-env">
+                <h3>System Overview</h3>
+                <div class="containergraph">
+                    <div class="panel">
+                        <h3>Processor</h3>
+                        <div class="chart-container">
+                            <canvas id="processorChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Network</h3>
+                        <div class="chart-container">
+                            <canvas id="networkChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Storage</h3>
+                        <div class="chart-container">
+                            <canvas id="storageChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>RAM</h3>
+                        <div class="chart-container">
+                            <canvas id="ramChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        </div>
+
+        <!-- Device Specifications and Network Specifications Panels -->
+        <div class="container">
+            <div class="specifications-container">
+                <div class="specification-panel">
+                    <h3><i class="fas fa-info-circle"></i> Device Specifications</h3><hr>
+                    <h4>Device Name: Admin1</h4>
+                    <h4>Processor: 11th Gen Intel(R)</h4>
+                    <h4>Installed RAM: 8.00 GB</h4>
+                    <h4>System Type: 64-bit OS</h4>
+                </div>
+                <div class="specification-panel">
+                    <h3><i class="fas fa-network-wired"></i> Network Specifications</h3><hr>
+                    <h4>IP Address: 192.168.1.100</h4>
+                    <h4>Subnet Mask: 255.255.255.0</h4>
+                    <h4>Gateway: 192.168.1.1</h4>
+                    <h4>DNS: 8.8.8.8, 8.8.4.4</h4>
+                </div>
+            </div>
+        </div>
+   
+                <div class="chart-container-net">
+                    <div class="system-env">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="script.js"></script> <!-- Custom JS -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            const performanceChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['CPU Usage', 'Memory Usage', 'Disk Activity'],
+                    datasets: [{
+                        label: 'Usage',
+                        data: [78.4, 40, 30], // Example data
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+    
+            const createChart = (ctx, type, data, options) => {
+                return new Chart(ctx, {
+                    type: type,
+                    data: data,
+                    options: options
+                });
+            };
+
+            var ctx1 = document.getElementById('processorChart').getContext('2d');
+            var processorChart = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                        label: 'Processor Usage',
+                        data: [12, 19, 3, 5, 2, 3, 7],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            var ctx2 = document.getElementById('networkChart').getContext('2d');
+            var networkChart = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                        label: 'Network Usage',
+                        data: [10, 15, 13, 12, 17, 20, 25],
+                        backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                        borderColor: 'rgba(0, 255, 0, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            var ctx3 = document.getElementById('storageChart').getContext('2d');
+            var storageChart = new Chart(ctx3, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Used', 'Free'],
+                    datasets: [{
+                        data: [65, 35],
+                        backgroundColor: ['#36A2EB', '#FFCE56'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            var ctx4 = document.getElementById('ramChart').getContext('2d');
+            var ramChart = new Chart(ctx4, {
+                type: 'bar',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                        label: 'RAM Usage',
+                        data: [5, 10, 15, 8, 12, 14, 18],
+                        backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                        borderColor: 'rgba(0, 255, 0, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Copyright © 2024, EduSync</p> |
+                <div class="footer-links">
+                    <a href="#">Terms of Service</a> |
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+</body>
+</html>

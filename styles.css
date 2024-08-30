@@ -1,0 +1,986 @@
+/* Profile dropdown panel */
+.profile-dropdown {
+    position: absolute;
+    right: 10px;
+    top: 60px;
+    background-color: white;
+    border-style: solid;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.profile-dropdown .dropdown-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(54, 72, 126);
+    padding: 10px 15px;
+    font-weight: bold; /* Make text bold */
+}
+
+.profile-dropdown .dropdown-item img {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-dropdown .dropdown-item h5 {
+    margin: 0;
+    font-weight: bold; /* Make text bold */
+}
+
+.profile-dropdown .dropdown-item i {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+.profile-dropdown .dropdown-item + .dropdown-item {
+    border-top: 1px solid #3b3d4e;
+}
+
+.profile-dropdown .dropdown-item:first-of-type {
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-dropdown .dropdown-item:not(:first-of-type) {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(240, 239, 239);
+    color: #36487e;
+    font-weight: bold; /* Make text bold */
+    margin-bottom: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    background-color: rgb(239, 237, 237);
+    padding-top: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .logo img {
+    width: 80px;
+    margin-right: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.hidden .logo img,
+.sidebar.hidden ul li a i {
+    opacity: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #35374c;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: rgb(54, 72, 126);
+    display: flex;
+    align-items: center;
+    font-weight: bold; /* Make text bold */
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+    transition: opacity 0.3s ease;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    padding: 0px;
+    padding-bottom: 50px; /* Space for footer */
+    padding-top: 0px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.top-bar-panel {
+    background-color: #f5f5f5; /* Light background color */
+    padding: 10px 20px; /* Padding inside the panel */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 20px; /* Space below the panel */
+    width: 100%;
+}
+
+.top-bar-left {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon i {
+    font-size: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+    color: rgb(54, 72, 126); /* Set color for the hamburger icon */
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-style: outset;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.search-box input {
+    border: none;
+    background: none;
+    color: rgb(54, 72, 126);
+    outline: none;
+    width: 150px;
+    font-weight: bold; /* Make text bold */
+}
+
+.search-box i {
+    margin-left: 10px;
+}
+
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+
+/*Notifications*/
+.notifications-item {
+    background: #f8f8f8;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notifications-text {
+    margin-right: 20px;
+}
+
+.abort-button {
+    background: #ff4d4d;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.abort-button:hover {
+    background: #ff1a1a;
+}
+
+.notifications, .messages, .user-info {
+    margin-left: 20px;
+    position: relative;
+}
+
+.notifications i {
+    color: #36487e; /* Set color for the notification icon */
+    cursor: pointer;
+}
+
+.notifications .badge {
+    position: absolute;
+    top: -5px;
+    right: -18px;
+    background-color: #36487e;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.notification-panel {
+    position: absolute;
+    top: 30px; /* Adjust as needed */
+    right: 0;
+    width: 300px; /* Adjust width as needed */
+    background-color:white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+}
+
+.notification-header {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notification-header span {
+    font-weight: bold;
+    color: #36487e;
+}
+
+.notification-header i {
+    cursor: pointer;
+}
+
+.notification-menu {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1001;
+}
+
+.notification-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notification-menu ul li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.notification-menu ul li:hover {
+    background-color: #f0f0f0;
+}
+
+.notification-list {
+    max-height: 300px; /* Adjust as needed */
+    overflow-y: auto;
+}
+
+.notification-item {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-text {
+    flex: 1;
+}
+
+.notification-text p {
+    margin: 0;
+    font-weight: bold;
+    color: #36487e;
+}
+
+.notification-text span {
+    font-size: 12px;
+    color: #888;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+.statistics {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(54, 72, 126);
+    margin-top: 20px;
+}
+
+.stat-box {
+    background-color: white;
+    border-style: outset;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.progress-bar-container {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 8px;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.goal-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 5px;
+    color: #6c757d;
+}
+
+.progress-percentage {
+    font-weight: bold;
+}
+
+
+
+.charts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    color: #36487e;
+}
+
+.chart-box {
+    background-color: white;
+    border-style: outset;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    flex: 1;
+    min-width: 300px;
+    font-weight: bold; /* Make text bold */
+}
+
+.chart-title {
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold; /* Make text bold */
+}
+
+
+/*SYSTEM ENVIROMENT*/
+.system-env {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+.system-env h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.system-env h2 i {
+    margin-right: 10px;
+}
+.details p {
+    margin: 10px 0;
+    font-size: 1em;
+}
+
+.container{
+    padding: 20px;
+}
+.cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.card {
+    background-color: rgb(237, 236, 236);
+    border-style: outset;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    width: 30%;
+    margin: 10px 0;
+}
+.card h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+.card p {
+    font-size: 1em;
+}
+.chart-container {
+    width: 100%;
+    margin: 20px 0;
+}
+canvas {
+    width: 100%;
+    height: 400px;
+}
+
+/* Footer */
+.footer {
+    background-color: white;
+    color: #36487e;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 250px); /* Adjust for sidebar width */
+    left: 250px; /* Align with sidebar */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping to the next line if needed */
+    gap: 10px; /* Space between elements */
+}
+
+.footer p {
+    margin: 0;
+    font-weight: bold; /* Make text bold */
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between links */
+}
+
+.footer-links a {
+    color: #36487e;
+    text-decoration: none;
+    font-weight: bold; /* Make text bold */
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/*INSTALLED APPLICATIONS PAGE*/
+.search-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.search-filter-left {
+    display: flex;
+    align-items: center;
+}
+
+.search-filter-left input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-filter-left select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.update-btn, .uninstall-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.update-btn, .history-btn {
+    background-color: #3498db;
+    border-radius: 5px;
+}
+
+.uninstall-btn, .delete-btn {
+    background-color: #e74c3c;
+    border-radius: 5px;
+}
+
+.applications-list{
+    padding: 20px;
+}
+
+.applications-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.applications-list head{
+    color:#000000 ;
+}
+.applications-list th, .applications-list td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #7d9bf8; /* Border color for table cells */
+}
+
+.applications-list th {
+    background-color: #dbf9fa; /* Background color for table headers */
+}
+
+.applications-list tr:nth-child(even), tr:nth-child(odd){
+    background-color: #fafbfd; /* Zebra striping for rows */
+}
+
+
+.status-icon {
+    margin-right: 5px;
+}
+
+.status-active {
+    color: #2ecc71;
+}
+
+.status-inactive {
+    color: #e74c3c;
+}
+
+/*PC Details*/
+.nested-table{
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+}
+
+.nested-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.nested-table th, .nested-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #7d9bf8; /* Border color for table cells */
+}
+
+.nested-table th {
+    background-color: #dbf9fa; /* Background color for table headers */
+}
+
+.nested-table tr:nth-child(even), tr:nth-child(odd){
+    background-color: #fafbfd; /* Zebra striping for rows */
+}
+
+
+.status-icon {
+    margin-right: 5px;
+}
+
+.status-active {
+    color: #2ecc71;
+}
+
+.status-inactive {
+    color: #e74c3c;
+}
+
+/* "+" Icon Button */
+/* File Upload Panel Styles */
+.file-upload-panel {
+    display: none; /* Hidden by default */
+    border: 2px dashed #a0a0a0;
+    background-color: #e0e0e0;
+    padding: 40px; /* Increased padding */
+    text-align: center;
+    border-radius: 12px; /* Increased border radius */
+    margin-top: 20px;
+    max-width: 600px; /* Set a maximum width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.file-upload-label {
+    cursor: pointer;
+    color: #606060;
+    font-size: 24px; /* Increased font size */
+}
+
+.file-upload-label i {
+    font-size: 72px; /* Increased icon size */
+}
+
+.file-upload-label p {
+    margin-top: 20px; /* Increased margin-top */
+    font-size: 20px; /* Increased font size */
+}
+
+.file-input {
+    display: none; /* Hide the default file input */
+}
+  
+
+.add-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+  
+/* PC details styling */
+.pc-details {
+    margin-bottom: 30px;
+}
+
+.pc {
+    margin-bottom: 20px;
+}
+
+.pc h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.table {
+    margin-top: 10px;
+}
+
+.table th, .table td {
+    text-align: left;
+}
+
+.table .status.active {
+    color: green;
+    font-weight: bold;
+}
+
+.table .status.inactive {
+    color: red;
+    font-weight: bold;
+}
+
+.btn-sm {
+    padding: 3px 6px;
+}
+
+/*DOUBTS PAGE STYLE*/
+/* Buttons for Answer and View */
+.answer-view-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.answer-view-buttons button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.answer-view-buttons .answer {
+    background-color: #3498db; /* Match with .update-btn and .history-btn */
+}
+
+.answer-view-buttons .view {
+    background-color: #e74c3c; /* Match with .uninstall-btn and .delete-btn */
+}
+
+.status-new {
+    color: #ff9800;
+}
+.status-answered {
+    color: #4CAF50;
+}
+.status-not-answered {
+    color: #f44336;
+}
+
+/* FAQ List Styles */
+.faq-list {
+    background-color: white;
+    border-style: outset;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.faq-list h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #0f3b70;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: rgb(237, 236, 236);
+    border-style: outset;
+    border: 1px solid #ddd;
+}
+
+.faq-item h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #0f3b70;
+}
+
+.faq-item p {
+    margin: 0;
+    color: #333;
+}
+
+
+
+/* Center the profile header */
+.profile-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Align the profile information */
+.profile-info {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-style: outset;
+    padding: 20px;
+    border-radius: 10px;
+    width:100%;
+    max-width: none; /* Set a max width */
+    margin: auto; /* Center the content */
+}
+
+.profile-img img {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    border-radius: 50%;
+    border: 4px solid white; /* White border around the image */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    background: linear-gradient(45deg, #ff007a, #ffba00); /* Gradient border effect */
+    padding: 5px; /* Spacing for gradient border */
+    margin-right: 20px; /* Space between image and details */
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 140px); /* Adjust width considering image and margin */
+}
+
+.profile-details h2 {
+    font-weight: bold;
+    margin: 0;
+}
+
+.profile-details .description {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.profile-details .tags .badge {
+    background-color: rgb(202, 198, 198); /* Blue color */
+    color: #36487e; /* Text color */
+    padding: 5px 10px; /* Optional: Padding for the badge */
+    border-radius: 15px; /* Optional: Rounded corners */
+    font-weight: bold; /* Optional: Bold text */
+}
+
+.gradient-divider {
+    border-top: 3px solid #032a86; /* Adjust the gradient color as needed */
+    width: 100%;
+    margin: 20px 0;
+    margin-left: 20px;
+}
+
+
+/* Consistent styles for edit section */
+.edit-profile {
+    background-color: white;
+    border-style: groove;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+    margin-bottom: 20px;
+}
+
+.edit-profile h4 {
+    margin-bottom: 20px;
+    color: #36487e;
+    font-weight: bold; /* Make text bold */
+    
+}
+
+.edit-profile .form-control {
+    background-color: white;
+    border: 1px solid #444;
+    color: #36487e;
+    border-radius: 5px;
+    padding: 5px; /* Increased padding for more space */
+    margin-bottom: 15px; /* Space between form fields */
+}
+
+/* Style the buttons consistently */
+.edit-profile .btn, .about-section .btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: white; /* White text color */
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff007a, #ffba00);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #e6006c, #ff9a00);
+}
+
+.btn-secondary {
+    background: #4e5d78;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background: #3b4a63;
+}
+
+/* Section styles */
+.about-section,
+.addinfo-section {
+    background-color: white;
+    border-style:groove;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.about-section ul,
+.addinfo-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-section li,
+.addinfo-section li {
+    margin-bottom: 10px;
+}
+
+/* Icon styles */
+.about-section i,
+.addinfo-section i {
+    margin-right: 10px;
+    color: #36487e;
+}
+
+/* Centered layout for profile container */
+.profile-container .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Ensure equal height columns */
+.profile-container .col-lg-6 {
+    flex: 1;
+    min-height: 400px; /* Optional: Set a minimum height */
+}
+
+
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.header h1 {
+    font-size: 36px;
+    color: #0f3b70;
+    font-weight: bold;
+    font-family: 'Arial Black', sans-serif;
+}
+
+/* Back Button Styles */
+.back-button {
+    background-color: #0f3b70;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 140px;
+    left: 340px;
+}
+.back-button i {
+    margin-right: 10px;
+}
+.back-button:hover {
+    background-color: #0a294c;
+}
+.status-active {
+    color: #4CAF50; /* Green for active */
+}
+.status-inactive {
+    color: #f44336; /* Red for inactive */
+}

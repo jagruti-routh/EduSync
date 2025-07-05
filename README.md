@@ -24,7 +24,6 @@ A centralized lab control system built using **Electron** and **Node.js** that e
 | OS               | Windows/Linux    |
 
 
-## 📸 Screenshots (Optional – Upload images first)
 
 ### 🖥️ Admin Dashboard  
 ![Dashboard](dashboard1.png)
@@ -37,10 +36,14 @@ A centralized lab control system built using **Electron** and **Node.js** that e
 
 ---
 
-🧠 Use Case
-Designed for college/university labs where a Class Representative (CR) or admin faculty can:
-Push software installs to all PCs
-Track connection status of students
-Control lab PCs from one dashboard
+## 🧠 Use Case
+
+EduSync is designed for college or university computer labs where a faculty member needs to manage multiple student PCs from a single dashboard.
+
+With EduSync, the admin can:
+- 📦 Push software installations, updates, or uninstallations to all connected student systems
+- 🔗 Monitor the real-time connection status of each student PC
+- 🖥️ Centrally control lab activities and system behavior through an intuitive dashboard
+- 🧾 Log all activities and maintain audit trails for lab sessions or exams
 
 

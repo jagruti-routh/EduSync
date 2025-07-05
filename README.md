@@ -27,7 +27,7 @@ A centralized lab control system built using **Electron** and **Node.js** that e
 ## 📸 Screenshots (Optional – Upload images first)
 
 ### 🖥️ Admin Dashboard  
-![Dashboard](dashboard.png)
+![Dashboard](dashboard1.png)
 
 ### 🧾 Live Logs  
 ![Logs](logs.png)
